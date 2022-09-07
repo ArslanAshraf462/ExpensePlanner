@@ -34,6 +34,8 @@ class MyHomePage extends StatelessWidget {
       date: DateTime.now(),
       ),
   ];
+  String? titleInput;
+  String? amountInput;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +43,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        //mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Container(
@@ -50,6 +52,41 @@ class MyHomePage extends StatelessWidget {
               color: Colors.blue,
               child: Text('Chart'),
               elevation: 5,
+            ),
+          ),
+          Card(
+            elevation: 5.0,
+            child: Container(
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Title',
+                    ),
+                    onChanged: (value) {
+                      titleInput = value;
+                    },
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      labelText: 'Amount',
+                    ),
+                    onChanged: (value) {
+                      amountInput = value;
+                    },
+                  ),
+                  TextButton(
+                    onPressed: (){
+                      print(titleInput);
+                      print(amountInput);
+                    },
+                    style: ButtonStyle(foregroundColor: MaterialStateProperty.all(Colors.purple)), 
+                  child: Text('Add Transaction'),
+                  ),
+                ],
+              ),
             ),
           ),
           Column(
